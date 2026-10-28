@@ -10,160 +10,177 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
 
-:root{--y:#FFC72C;--k:#000;--w:#fff;--g:#666;--ease:cubic-bezier(.2,.8,.2,1)}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--w);color:var(--k);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-h1,h2,h3{font-weight:800;letter-spacing:-.04em;line-height:1.02}
-p{color:var(--g);line-height:1.75}
-:focus-visible{outline:3px solid var(--k);outline-offset:3px;box-shadow:0 0 0 6px var(--y)}
-#bar{position:fixed;inset:0 0 auto;height:6px;background:var(--y);box-shadow:0 1px 0 var(--k);transform:scaleX(0);transform-origin:left;z-index:2000}
-.ring{position:fixed;top:0;left:0;width:34px;height:34px;margin:-17px 0 0 -17px;border:2px solid var(--k);box-shadow:0 0 0 2px var(--w);border-radius:50%;pointer-events:none;z-index:2000;display:none;transition:width .25s,height .25s,margin .25s,background .25s}
-.ring.big{width:76px;height:76px;margin:-38px 0 0 -38px;background:rgba(255,199,44,.6)}
-@media(pointer:fine){.ring{display:block}}
-.nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:1500;padding:18px 0;transition:background .3s,box-shadow .3s}
-.nav.s{background:rgba(255,255,255,.94);backdrop-filter:blur(10px);box-shadow:0 1px 0 #e6e6e6}
-.brand{font-weight:800;letter-spacing:-.03em;text-decoration:none;color:var(--k);display:flex;align-items:center;gap:10px}
-.brand i{width:14px;height:14px;border-radius:50%;background:var(--y);border:2px solid var(--k)}
-.btn-k{display:inline-block;background:var(--k);color:var(--w);border:0;border-radius:999px;padding:.85rem 1.7rem;font-weight:700;text-decoration:none;transition:background .2s,color .2s,box-shadow .25s,transform .25s}
-.btn-k:hover{background:var(--y);color:var(--k);box-shadow:5px 5px 0 var(--k)}
-.btn-y{background:var(--y);color:var(--k);box-shadow:5px 5px 0 var(--k)}
-.btn-y:hover{background:var(--w);transform:translate(3px,3px);box-shadow:2px 2px 0 var(--k)}
+:root{--bg:#0a0a0a;--card:#141414;--line:#2a2a2a;--y:#FFC72C;--m:#a3a3a3;--ease:cubic-bezier(.2,.8,.2,1)}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:#fff;overflow-x:clip;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-weight:800;letter-spacing:-.04em;line-height:1.04}
+p{color:var(--m);line-height:1.75}
+:focus-visible{outline:3px solid var(--y);outline-offset:3px}
+#bar{position:fixed;inset:0 0 auto;height:4px;background:var(--y);transform:scaleX(0);transform-origin:left;z-index:2000}
+/* nav pill */
+.nav{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);width:min(94vw,920px);z-index:1500;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 10px 10px 22px;border-radius:999px;background:rgba(20,20,20,.72);backdrop-filter:blur(14px);border:1px solid var(--line)}
+.brand{font-weight:800;letter-spacing:-.03em;text-decoration:none;color:#fff;display:flex;align-items:center;gap:10px}
+.brand i{width:12px;height:12px;border-radius:50%;background:var(--y);box-shadow:0 0 14px var(--y)}
+.nav-l{display:none;gap:26px}.nav-l a{color:var(--m);text-decoration:none;font-weight:500;font-size:.95rem;transition:color .2s}.nav-l a:hover{color:#fff}
+@media(min-width:768px){.nav-l{display:flex}}
+.btn-y{display:inline-block;background:var(--y);color:#000;border:0;border-radius:999px;padding:.8rem 1.6rem;font-weight:800;text-decoration:none;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.btn-y:hover{color:#000;transform:translateY(-3px);box-shadow:0 10px 40px rgba(255,199,44,.45)}
+.btn-o{display:inline-block;border:1px solid #444;color:#fff;border-radius:999px;padding:.8rem 1.6rem;font-weight:700;text-decoration:none;transition:border-color .2s,background .2s}
+.btn-o:hover{border-color:var(--y);background:rgba(255,199,44,.08);color:#fff}
 /* hero */
-.hero{min-height:100vh;display:flex;align-items:center;padding:140px 0 90px;position:relative;overflow:hidden}
-.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(460px circle at var(--mx,72%) var(--my,28%),rgba(255,199,44,.6),transparent 70%);pointer-events:none}
+.hero{min-height:100vh;display:flex;align-items:center;padding:150px 0 90px;position:relative;overflow:hidden}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(#1b1b1b 1px,transparent 1px),linear-gradient(90deg,#1b1b1b 1px,transparent 1px);background-size:60px 60px;-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse at 50% 30%,#000 20%,transparent 75%)}
+.glow{position:absolute;border-radius:50%;filter:blur(90px);background:var(--y);opacity:.28;pointer-events:none}
+.g1{width:420px;height:420px;right:-80px;top:8%}.g2{width:300px;height:300px;left:-90px;bottom:6%;opacity:.16}
 .hero .container{position:relative;z-index:2}
-.tag{display:inline-flex;align-items:center;gap:10px;background:var(--k);color:var(--w);border-radius:999px;padding:.65rem 1.3rem;font-weight:700;font-size:.95rem}
-.tag b{width:9px;height:9px;border-radius:50%;background:var(--y);animation:pulse 1.6s infinite}
-@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(255,199,44,.3)}}
-h1.big{font-size:clamp(2.8rem,8.4vw,7rem);margin:26px 0 28px}
+.tag{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:999px;padding:.55rem 1.1rem;font-weight:600;font-size:.9rem}
+.tag b{width:8px;height:8px;border-radius:50%;background:var(--y);animation:pulse 1.6s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(255,199,44,.25)}}
+h1.big{font-size:clamp(2.7rem,6.6vw,5.6rem);margin:24px 0 26px}
 .ln{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
 .ln>span{display:inline-block;position:relative}
-.wd{display:inline-block;white-space:nowrap}
-.c{display:inline-block;font-style:normal;will-change:transform}
-.ln svg{position:absolute;left:0;bottom:.02em;width:100%;height:.22em;overflow:visible}
+.ln svg{position:absolute;left:0;bottom:.02em;width:100%;height:.2em;overflow:visible}
 .ln path{fill:none;stroke:var(--y);stroke-width:10;stroke-linecap:round}
-.lead{font-size:1.2rem;max-width:32rem;margin-bottom:34px}
-.sh{position:absolute;z-index:1;pointer-events:none}
-.sh i{display:block;width:100%;height:100%}
-.s1{right:7%;top:16%;width:clamp(120px,17vw,250px);aspect-ratio:1}.s1 i{background:var(--y);border:4px solid var(--k);border-radius:50%;animation:wob 6s ease-in-out infinite}
-.s2{right:22%;bottom:12%;width:clamp(60px,8vw,120px);aspect-ratio:1}.s2 i{border:6px solid var(--k);border-radius:50%}
-.s3{right:4%;bottom:20%;width:clamp(44px,6vw,84px);aspect-ratio:1}.s3 i{background:var(--k);clip-path:polygon(40% 0,60% 0,60% 40%,100% 40%,100% 60%,60% 60%,60% 100%,40% 100%,40% 60%,0 60%,0 40%,40% 40%)}
-.s4{right:30%;top:26%;width:26px;height:26px}.s4 i{background:var(--k);border-radius:50%}
-@keyframes wob{50%{border-radius:42% 58% 55% 45%/50% 40% 60% 50%}}
-.badge{position:absolute;left:50%;bottom:30px;width:120px;height:120px;margin-left:-60px;z-index:2}
-.badge svg{width:100%;height:100%;overflow:visible}
-.badge text{font-size:15px;font-weight:800;letter-spacing:.14em;fill:var(--k)}
+.lead{font-size:1.15rem;max-width:30rem;margin-bottom:32px}
+.win{background:#0f0f0f;border:1px solid var(--line);border-radius:22px;box-shadow:0 40px 120px rgba(0,0,0,.6),0 0 0 1px rgba(255,199,44,.08);transform-style:preserve-3d;overflow:hidden}
+.win-h{display:flex;gap:8px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);background:#141414}
+.win-h i{width:12px;height:12px;border-radius:50%;background:#333}.win-h i:first-child{background:var(--y)}
+.win-h span{margin-left:10px;color:var(--m);font-size:.82rem}
+.win pre{margin:0;padding:22px;min-height:230px;font:500 .92rem/1.9 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#fff;white-space:pre-wrap}
+.win pre div:after{content:""}
+.win pre .ok{color:var(--y)}
+.chip{position:absolute;z-index:3;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.55rem 1rem;font-weight:700;font-size:.85rem;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.chip b{color:var(--y)}
+.c1{right:-10px;top:-22px}.c2{left:-14px;bottom:44px}
 /* marquee */
-.mqs{transform:rotate(-3deg) scale(1.08);margin:4vh 0;position:relative;z-index:3}
-.mq{overflow:hidden;padding:14px 0;border-block:3px solid var(--k);will-change:transform}
-.mq.a{background:var(--y)}.mq.b{background:var(--k);color:var(--y);margin-top:-3px}
+.mq{overflow:hidden;border-block:1px solid var(--line);padding:22px 0;background:#0e0e0e}
 .tr{display:flex;width:max-content}
-.tr span{font-size:clamp(1.8rem,4.6vw,3.4rem);font-weight:800;letter-spacing:-.03em;padding:0 26px;white-space:nowrap}
-.tr span:after{content:"\2726";margin-left:52px}
-/* shared section layers */
-.layer{position:relative}
-.bg{position:absolute;inset:0;z-index:0}
-.layer>.container,.layer>.hz-in,.layer>footer,#access{position:relative;z-index:1}
-.dark{color:var(--w)}.dark p{color:#bdbdbd}
-/* manifesto */
-.mf{padding:22vh 0}.mf .bg{background:var(--y)}
-.mf p{font-size:clamp(2.1rem,6.2vw,5.4rem);font-weight:800;letter-spacing:-.04em;line-height:1.08;color:var(--k);max-width:1150px;margin:0}
-.mf .w{display:inline-block;margin-right:.22em}
-/* phases */
-.hz{border-radius:0 0 64px 64px;overflow:hidden}.hz .bg{background:var(--k)}
-.hz-in{height:100vh;display:flex;align-items:center}
-.track{display:flex;gap:26px;padding:0 8vw;will-change:transform}
-.intro{flex:none;width:min(40vw,540px);display:flex;flex-direction:column;justify-content:center}
-.intro h2{font-size:clamp(2.4rem,5.2vw,4.6rem)}
-.card-p{flex:none;width:min(80vw,400px);min-height:450px;background:var(--y);color:var(--k);border-radius:34px;padding:32px;display:flex;flex-direction:column;border:4px solid var(--y);transition:transform .4s var(--ease),background .3s,color .3s}
-.card-p:hover{transform:translateY(-14px) rotate(-1.6deg);background:var(--w);border-color:var(--y)}
-.card-p .n{font-size:6rem;font-weight:800;letter-spacing:-.07em;line-height:.9}
-.card-p h3{font-size:2.1rem;margin:20px 0 10px}
-.card-p p{color:#333;margin:0 0 auto}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.chips b{border:2px solid var(--k);border-radius:999px;padding:.28rem .85rem;font-size:.82rem;font-weight:700}
-.hz-p{position:absolute;left:8vw;right:8vw;bottom:34px;height:5px;background:#333;border-radius:3px;overflow:hidden}
-.hz-p i{display:block;height:100%;background:var(--y);transform:scaleX(0);transform-origin:left}
-@media(max-width:991.98px),(prefers-reduced-motion:reduce){.hz-in{height:auto;padding:90px 0 110px}.track{overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:20px}.card-p{scroll-snap-align:center}.intro{width:78vw}}
+.tr span{font-size:clamp(1.4rem,3.4vw,2.4rem);font-weight:800;letter-spacing:-.03em;padding:0 26px;white-space:nowrap;color:#3a3a3a;transition:color .3s}
+.tr span:nth-child(3n){color:var(--y)}
+.tr span:after{content:"/";margin-left:52px;color:#2a2a2a}
+/* sections */
+.sec{padding:16vh 0 8vh}
+.sec h2{font-size:clamp(2.1rem,5vw,4rem)}
+.sub{font-size:1.1rem;max-width:30rem}
+/* stacking cards */
+.stack{margin-top:60px;padding-bottom:6vh}
+.sc{position:sticky;top:calc(100px + var(--i)*24px);margin-bottom:7vh;border-radius:34px;padding:clamp(24px,4vw,44px);min-height:clamp(300px,44vh,400px);display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(145deg,#1b1b1b,#101010);border:1px solid var(--line);overflow:hidden;will-change:transform}
+.sc.y{background:var(--y);color:#000;border-color:var(--y)}.sc.y p{color:#2d2400}
+.sc:before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.1),transparent 60%);pointer-events:none}
+.sc .n{font-size:clamp(4.5rem,11vw,9rem);font-weight:800;letter-spacing:-.07em;line-height:.85;position:absolute;right:30px;top:20px;opacity:.14}
+.sc h3{font-size:clamp(1.8rem,3.6vw,3rem);margin:0 0 10px;position:relative}
+.sc p{max-width:30rem;margin:0;position:relative}
+.chips{display:flex;flex-wrap:wrap;gap:8px;position:relative}
+.chips b{border:1.5px solid currentColor;border-radius:999px;padding:.3rem .9rem;font-size:.82rem;font-weight:700;opacity:.85}
+/* steps */
+.steps{position:relative;margin-top:64px}
+.line{position:absolute;left:0;right:0;top:27px;height:2px;background:var(--line);display:none}
+.line i{display:block;height:100%;background:var(--y);transform:scaleX(0);transform-origin:left}
+@media(min-width:768px){.line{display:block}}
+.dot{width:56px;height:56px;border-radius:50%;background:var(--bg);border:2px solid var(--y);color:var(--y);display:grid;place-items:center;font-weight:800;position:relative;margin-bottom:22px}
+.steps h3{font-size:1.5rem}
 /* stats */
-.st{padding:20vh 0 16vh}
-.st .n{font-size:clamp(5rem,14vw,10.5rem);font-weight:800;letter-spacing:-.06em;line-height:1;color:transparent;-webkit-text-stroke:3px var(--k);background:linear-gradient(var(--y),var(--y)) no-repeat left bottom/100% var(--f,100%);-webkit-background-clip:text;background-clip:text}
-.st p{margin:8px 0 0;font-weight:700;color:var(--k);font-size:1.15rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));border:1px solid var(--line);border-radius:30px;overflow:hidden;background:var(--card)}
+.stat{padding:clamp(28px,4vw,52px);border-right:1px solid var(--line);position:relative}
+.stat:last-child{border:0}
+.stat .n{font-size:clamp(3.6rem,8vw,6.5rem);font-weight:800;letter-spacing:-.06em;line-height:1;color:var(--y)}
+.stat p{margin:6px 0 0;color:#fff;font-weight:600}
+/* faq */
+details{border-bottom:1px solid var(--line);padding:22px 0}
+summary{font-size:1.25rem;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";color:var(--y);font-size:1.8rem;line-height:1;transition:transform .3s var(--ease)}
+details[open] summary:after{transform:rotate(135deg)}
+details p{margin:14px 0 0;max-width:40rem}
 /* access */
-.ac{padding:10vh 0 0}.ac .bg{background:var(--k)}
-.ac-box{background:var(--y);color:var(--k);border-radius:44px;padding:clamp(28px,6vw,76px);position:relative;overflow:hidden}
-.ac-box h2{max-width:12ch;font-size:clamp(2.2rem,4.6vw,3.8rem)}
-.ac-box p{color:#3a3000}
-.f{display:block;margin-bottom:18px}
-.f label{display:block;font-weight:800;font-size:.9rem;margin-bottom:6px}
-.f input{width:100%;background:transparent;color:var(--k);border:0;border-bottom:3px solid var(--k);border-radius:0;padding:10px 0;font-size:1.1rem;font-weight:500}
-.f input::placeholder{color:#7a6410}
-.f input:focus{outline:0;border-bottom-color:var(--w);box-shadow:0 5px 0 -3px var(--k)}
-.btn-b{background:var(--k);color:var(--w);box-shadow:5px 5px 0 var(--w)}
-.btn-b:hover{background:var(--w);color:var(--k);box-shadow:2px 2px 0 var(--k);transform:translate(3px,3px)}
-.msg{min-height:1.4em;font-size:.95rem;font-weight:700;margin:14px 0 0;color:var(--k)}
-.msg a{color:var(--k)}
+.acbox{border:2px solid var(--y);border-radius:44px;padding:clamp(26px,6vw,72px);background:radial-gradient(700px circle at 85% 0%,rgba(255,199,44,.16),transparent 60%),#0f0f0f;box-shadow:0 0 140px rgba(255,199,44,.14);position:relative;overflow:hidden}
+.acbox h2{max-width:12ch;font-size:clamp(2.1rem,4.6vw,3.8rem)}
+.f{display:block;margin-bottom:16px}
+.f label{display:block;font-weight:700;font-size:.9rem;margin-bottom:7px}
+.f input{width:100%;background:#181818;color:#fff;border:1px solid #333;border-radius:14px;padding:14px 16px;font-size:1.05rem;transition:border-color .2s,box-shadow .2s}
+.f input::placeholder{color:#666}
+.f input:focus{outline:0;border-color:var(--y);box-shadow:0 0 0 4px rgba(255,199,44,.16)}
+.msg{min-height:1.4em;font-size:.95rem;font-weight:600;margin:14px 0 0;color:var(--y)}.msg a{color:#fff}
 .hp{position:absolute;left:-9999px}
 .done{display:none}
-.linkbox{display:inline-flex;align-items:center;gap:14px;max-width:100%;background:var(--k);color:var(--w);border-radius:999px;padding:8px 8px 8px 24px;text-decoration:none;box-shadow:6px 6px 0 var(--w);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
-.linkbox:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--w);color:var(--w)}
+.linkbox{display:inline-flex;align-items:center;gap:14px;max-width:100%;background:#fff;color:#000;border-radius:999px;padding:8px 8px 8px 24px;text-decoration:none;box-shadow:6px 6px 0 var(--y);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.linkbox:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--y);color:#000}
 .linkbox span{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
-.linkbox em{font-style:normal;flex:none;background:var(--y);color:var(--k);border-radius:999px;padding:.8rem 1.4rem;font-weight:800}
+.linkbox em{font-style:normal;flex:none;background:var(--y);border-radius:999px;padding:.8rem 1.4rem;font-weight:800}
 .linkbox em:after{content:" \2197"}
 .cf{position:absolute;width:11px;height:11px;pointer-events:none;z-index:3}
-footer{padding:50px 0;font-size:.95rem;color:#999}footer a{color:inherit}
-@media(prefers-reduced-motion:reduce){.tag b,.s1 i{animation:none}}
+footer{padding:60px 0 50px;font-size:.95rem;color:#777}footer a{color:inherit}
+@media(prefers-reduced-motion:reduce){.tag b{animation:none}}
 </style>
 </head>
 <body>
-<div id="bar"></div><div class="ring" id="ring"></div>
-
-<nav class="nav" id="nav"><div class="container d-flex justify-content-between align-items-center">
+<div id="bar"></div>
+<nav class="nav" id="nav">
   <a class="brand" href="https://www.myapedeveloper.com/" target="_blank" rel="noopener"><i></i>Myape Developer</a>
-  <a class="btn-k" href="#access">Get access</a>
-</div></nav>
+  <div class="nav-l"><a href="#phases">Phases</a><a href="#how">How it works</a><a href="#faq">FAQ</a></div>
+  <a class="btn-y" href="#access">Get access</a>
+</nav>
 
-<header class="hero" id="hero"><div class="container"><div class="row"><div class="col-lg-10">
-  <span class="tag" data-in><b></b>Full course archive</span>
-  <h1 class="big" aria-label="All your WordPress notes, kept in one shelf.">All your WordPress notes, kept in one shelf.</h1>
-  <p class="lead" data-in>Missed a class, forgot a step, or just want to revise before you build your next site? Pick a phase and jump back in.</p>
-  <a class="btn-k btn-y mag" href="#access" data-in>Get free access</a>
-</div></div></div>
-  <div class="sh s1" data-d="40" data-s="1.2"><i></i></div><div class="sh s2" data-d="-60" data-s="2"><i></i></div>
-  <div class="sh s3" data-d="80" data-s=".6"><i></i></div><div class="sh s4" data-d="-30" data-s="1.6"><i></i></div>
-  <div class="badge" id="badge" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><path id="cp" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0"/></defs><text><textPath href="#cp">SCROLL DOWN • SCROLL DOWN • </textPath></text><path d="M60 42v34m-12-12 12 12 12-12" fill="none" stroke="#000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-</header>
+<header class="hero" id="hero"><div class="grid-bg"></div><div class="glow g1" id="g1"></div><div class="glow g2" id="g2"></div>
+<div class="container"><div class="row align-items-center g-5">
+  <div class="col-lg-7">
+    <span class="tag" data-in><b></b>Full course archive &middot; 7 phases</span>
+    <h1 class="big" aria-label="All your WordPress notes, kept in one shelf.">
+      <span class="ln" aria-hidden="true"><span>All your</span></span>
+      <span class="ln" aria-hidden="true"><span>WordPress notes,<svg viewBox="0 0 400 20" preserveAspectRatio="none"><path id="scr" pathLength="1" d="M4 12 C70 3,160 17,230 8 S350 4,396 9"/></svg></span></span>
+      <span class="ln" aria-hidden="true"><span>kept in one shelf.</span></span>
+    </h1>
+    <p class="lead" data-in>Missed a class, forgot a step, or just want to revise before you build your next site? Pick a phase and jump back in.</p>
+    <div class="d-flex flex-wrap gap-3" data-in><a class="btn-y mag" href="#access">Get access</a><a class="btn-o" href="#phases">See the phases</a></div>
+  </div>
+  <div class="col-lg-5" style="perspective:1200px"><div class="position-relative" id="winwrap">
+    <div class="chip c1" id="c1"><b>67</b> topics</div><div class="chip c2" id="c2"><b>7</b> phases</div>
+    <div class="win" id="win"><div class="win-h"><i></i><i></i><i></i><span>terminal</span></div><pre id="code" aria-label="Example WP-CLI commands"></pre></div>
+  </div></div>
+</div></div></header>
 
-<section class="mqs" aria-hidden="true">
-  <div class="mq a"><div class="tr"><span>Themes</span><span>Plugins</span><span>Gutenberg</span><span>WooCommerce</span><span>Hooks</span><span>Security</span><span>Speed</span><span>Themes</span><span>Plugins</span><span>Gutenberg</span><span>WooCommerce</span><span>Hooks</span><span>Security</span><span>Speed</span></div></div>
-  <div class="mq b"><div class="tr"><span>Pages</span><span>Posts</span><span>Menus</span><span>Widgets</span><span>SEO</span><span>Forms</span><span>Backups</span><span>Pages</span><span>Posts</span><span>Menus</span><span>Widgets</span><span>SEO</span><span>Forms</span><span>Backups</span></div></div>
-</section>
+<div class="mq" aria-hidden="true"><div class="tr" id="tr">
+  <span>Themes</span><span>Plugins</span><span>Gutenberg</span><span>WooCommerce</span><span>Hooks</span><span>Security</span><span>Speed</span><span>SEO</span><span>Forms</span><span>Backups</span>
+  <span>Themes</span><span>Plugins</span><span>Gutenberg</span><span>WooCommerce</span><span>Hooks</span><span>Security</span><span>Speed</span><span>SEO</span><span>Forms</span><span>Backups</span>
+</div></div>
 
-<section class="layer mf" id="mf-s"><div class="bg"></div><div class="container"><p id="mf">Every phase from day one lives right here, ready the moment you need it, so your next site starts faster.</p></div></section>
+<section class="sec" id="phases"><div class="container">
+  <h2 class="rv">Seven phases. Stacked in order.</h2><p class="sub rv mt-3">Scroll and watch the course pile up, one phase on top of the next.</p>
+  <div class="stack" id="stack">
+    <article class="sc" style="--i:0"><span class="n">01</span><div><h3>Foundations</h3><p>Hosting, installation and a tour of the dashboard.</p></div><div class="chips"><b>Hosting</b><b>Install</b><b>Dashboard</b></div></article>
+    <article class="sc y" style="--i:1"><span class="n">02</span><div><h3>Themes</h3><p>Choose, install and customise the look of your site.</p></div><div class="chips"><b>Themes</b><b>Customizer</b><b>Child themes</b></div></article>
+    <article class="sc" style="--i:2"><span class="n">03</span><div><h3>Content</h3><p>Pages, posts, media and menus that stay organised.</p></div><div class="chips"><b>Pages</b><b>Posts</b><b>Menus</b></div></article>
+    <article class="sc y" style="--i:3"><span class="n">04</span><div><h3>Plugins</h3><p>Extend your site with the right tools, safely.</p></div><div class="chips"><b>Forms</b><b>SEO</b><b>Backups</b></div></article>
+    <article class="sc" style="--i:4"><span class="n">05</span><div><h3>Page builders</h3><p>Design flexible layouts without touching code.</p></div><div class="chips"><b>Blocks</b><b>Elementor</b><b>Layouts</b></div></article>
+    <article class="sc y" style="--i:5"><span class="n">06</span><div><h3>Speed &amp; SEO</h3><p>Make it fast and make it findable.</p></div><div class="chips"><b>Caching</b><b>Images</b><b>Ranking</b></div></article>
+    <article class="sc" style="--i:6"><span class="n">07</span><div><h3>Launch</h3><p>Secure it, test it and go live.</p></div><div class="chips"><b>Security</b><b>Testing</b><b>Go live</b></div></article>
+  </div>
+</div></section>
 
-<section class="layer hz dark" id="hz"><div class="bg"></div>
-  <div class="hz-in"><div class="track" id="track">
-    <div class="intro"><h2>Seven phases. One shelf.</h2><p class="mt-3">Keep scrolling. The course slides past, phase by phase.</p></div>
-    <article class="card-p"><div class="n">1</div><h3>Foundations</h3><p>Hosting, installation and a tour of the dashboard.</p><div class="chips"><b>Hosting</b><b>Install</b><b>Dashboard</b></div></article>
-    <article class="card-p"><div class="n">2</div><h3>Themes</h3><p>Choose, install and customise the look of your site.</p><div class="chips"><b>Themes</b><b>Customizer</b><b>Child themes</b></div></article>
-    <article class="card-p"><div class="n">3</div><h3>Content</h3><p>Pages, posts, media and menus that stay organised.</p><div class="chips"><b>Pages</b><b>Posts</b><b>Menus</b></div></article>
-    <article class="card-p"><div class="n">4</div><h3>Plugins</h3><p>Extend your site with the right tools, safely.</p><div class="chips"><b>Forms</b><b>SEO</b><b>Backups</b></div></article>
-    <article class="card-p"><div class="n">5</div><h3>Page builders</h3><p>Design flexible layouts without touching code.</p><div class="chips"><b>Blocks</b><b>Elementor</b><b>Layouts</b></div></article>
-    <article class="card-p"><div class="n">6</div><h3>Speed &amp; SEO</h3><p>Make it fast and make it findable.</p><div class="chips"><b>Caching</b><b>Images</b><b>Ranking</b></div></article>
-    <article class="card-p"><div class="n">7</div><h3>Launch</h3><p>Secure it, test it and go live.</p><div class="chips"><b>Security</b><b>Testing</b><b>Go live</b></div></article>
-    <div class="intro" style="width:min(60vw,380px)"><h2>That’s the whole shelf.</h2></div>
-  </div><div class="hz-p"><i id="hzp"></i></div></div>
-</section>
+<section class="sec" id="how"><div class="container">
+  <h2 class="rv">Three steps to the notes.</h2>
+  <div class="steps"><div class="line"><i id="ln"></i></div><div class="row g-5">
+    <div class="col-md-4 stp"><div class="dot">1</div><h3>Share your details</h3><p>Add your name and email in the form below.</p></div>
+    <div class="col-md-4 stp"><div class="dot">2</div><h3>Unlock the archive</h3><p>Your link to the full course appears right away.</p></div>
+    <div class="col-md-4 stp"><div class="dot">3</div><h3>Revise phase by phase</h3><p>Jump to the step you missed and keep building.</p></div>
+  </div></div>
+</div></section>
 
-<section class="st"><div class="container"><div class="row g-5">
-  <div class="col-md-4"><div class="n"><span data-c="7">7</span></div><p>Phases published</p></div>
-  <div class="col-md-4"><div class="n"><span data-c="67">67</span></div><p>Topics covered</p></div>
-  <div class="col-md-4"><div class="n"><span data-c="100">100</span>%</div><p>Course complete</p></div>
+<section class="sec"><div class="container"><div class="stats" id="stats">
+  <div class="stat"><div class="n"><span data-c="7">7</span></div><p>Phases published</p></div>
+  <div class="stat"><div class="n"><span data-c="67">67</span></div><p>Topics covered</p></div>
+  <div class="stat"><div class="n"><span data-c="100">100</span>%</div><p>Course complete</p></div>
 </div></div></section>
 
-<div class="layer ac dark" id="ac"><div class="bg"></div>
-<section id="access"><div class="container">
-  <div class="ac-box" id="box"><div class="row g-5 align-items-center">
+<section class="sec" id="faq"><div class="container"><div class="row g-5"><div class="col-lg-5"><h2 class="rv">Quick answers.</h2></div>
+  <div class="col-lg-7" id="fq">
+    <details><summary>How do I get access?</summary><p>Fill in the short form at the bottom of this page. Your link to the archive appears as soon as it is sent.</p></details>
+    <details><summary>What is inside the archive?</summary><p>Seven phases and 67 topics of WordPress notes, organised so you can find the step you need.</p></details>
+    <details><summary>What do you do with my details?</summary><p>They are emailed to the Myape Developer team so we know who is using the notes.</p></details>
+  </div></div></div></section>
+
+<section class="sec pb-5" id="access"><div class="container">
+  <div class="acbox" id="box"><div class="row g-5 align-items-center">
     <div class="col-lg-5"><h2>Tell us who you are, then step inside.</h2><p class="mt-3">Share your basic details and the full WordPress archive unlocks right here.</p></div>
     <div class="col-lg-7">
       <form id="gate" novalidate>
@@ -171,19 +188,18 @@ footer{padding:50px 0;font-size:.95rem;color:#999}footer a{color:inherit}
         <div class="col-md-6"><div class="f"><label for="ph">Phone (optional)</label><input id="ph" name="phone" type="tel" autocomplete="tel" placeholder="+91 98xxx xxxxx"></div></div></div>
         <div class="f"><label for="em">Email</label><input id="em" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
         <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn-k btn-b mt-2 mag" id="go" type="submit">Unlock the notes</button>
+        <button class="btn-y mt-2 mag" id="go" type="submit">Unlock the notes</button>
         <p class="msg" id="msg" role="status"></p>
       </form>
       <div class="done" id="done">
         <h3 class="h2 mb-3">You’re in. Thank you!</h3>
         <p class="mb-4">Your details are with us. Here is your link to the archive.</p>
-        <a class="linkbox" id="lnk" href="https://www.myapedeveloper.com/wordpress-cheatsheet/" target="_blank" rel="noopener"><span>myapedeveloper.com/wordpress-cheatsheet</span><em>Open</em></a>
+        <a class="linkbox" href="https://www.myapedeveloper.com/wordpress-cheatsheet/" target="_blank" rel="noopener"><span>myapedeveloper.com/wordpress-cheatsheet</span><em>Open</em></a>
       </div>
     </div>
   </div></div>
 </div></section>
 <footer><div class="container d-flex flex-wrap justify-content-between gap-2"><span>&copy; Myape Developer</span><a href="https://www.myapedeveloper.com/" target="_blank" rel="noopener">myapedeveloper.com</a></div></footer>
-</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -191,18 +207,13 @@ footer{padding:50px 0;font-size:.95rem;color:#999}footer a{color:inherit}
 gsap.registerPlugin(ScrollTrigger);
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const TO='hi@myapedeveloper.com',fine=matchMedia('(pointer:fine)').matches;
-addEventListener('scroll',()=>$('#nav').classList.toggle('s',scrollY>40),{passive:true});
 
-/* ---------- hero headline: split into characters ---------- */
-const lines=['All your','WordPress notes,','kept in one shelf.'];
-$('h1.big').innerHTML=lines.map((t,i)=>`<span class="ln" aria-hidden="true"><span>${t.split(' ').map(w=>`<span class="wd">${[...w].map(c=>`<i class="c">${c}</i>`).join('')}</span>`).join(' ')}${i==1?'<svg viewBox="0 0 400 20" preserveAspectRatio="none"><path id="scr" pathLength="1" d="M4 12 C70 3,160 17,230 8 S350 4,396 9"/></svg>':''}</span></span>`).join('');
+/* ---------- terminal text ---------- */
+const L=['$ wp core download','$ wp core install --url=mysite.com --title="My Site"','$ wp theme install astra --activate','$ wp plugin install elementor --activate','✔ Your site is ready.'];
+const pre=$('#code');pre.innerHTML=L.map(t=>`<div class="${t[0]=='$'?'':'ok'}">${t}</div>`).join('');
 
-/* ---------- cursor ring + links ---------- */
-if(fine){
-  const ring=$('#ring'),qx=gsap.quickTo(ring,'x',{duration:.35,ease:'power3'}),qy=gsap.quickTo(ring,'y',{duration:.35,ease:'power3'});
-  addEventListener('mousemove',e=>{qx(e.clientX);qy(e.clientY)});
-  $$('a,button').forEach(a=>{a.addEventListener('mouseenter',()=>ring.classList.add('big'));a.addEventListener('mouseleave',()=>ring.classList.remove('big'))});
-}
+/* ---------- spotlight on cards ---------- */
+if(fine)$$('.sc').forEach(c=>c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px')}));
 
 /* ---------- form: email the details to TO, then unlock ---------- */
 const form=$('#gate'),msg=$('#msg'),go=$('#go');
@@ -210,7 +221,7 @@ function confetti(){
   const box=$('#box'),r=box.getBoundingClientRect();
   for(let i=0;i<52;i++){
     const d=document.createElement('i');d.className='cf';
-    d.style.cssText=`background:${['#000','#fff','#FFC72C'][i%3]};left:50%;top:62%;border-radius:${i%2?'50%':'3px'};${i%3==2?'outline:2px solid #000':''}`;
+    d.style.cssText=`background:${['#FFC72C','#fff','#444'][i%3]};left:50%;top:62%;border-radius:${i%2?'50%':'3px'}`;
     box.appendChild(d);
     gsap.timeline({onComplete:()=>d.remove()})
       .to(d,{x:gsap.utils.random(-r.width/2,r.width/2),y:gsap.utils.random(-r.height*.75,-30),rotate:gsap.utils.random(-400,400),duration:.8,ease:'power3.out'})
@@ -245,64 +256,57 @@ form.addEventListener('submit',async e=>{
 
 /* ---------- scroll + motion ---------- */
 gsap.matchMedia().add('(prefers-reduced-motion: no-preference)',()=>{
-  const ST=ScrollTrigger;
   gsap.to('#bar',{scaleX:1,ease:'none',scrollTrigger:{start:0,end:'max',scrub:.2}});
 
-  // 1. hero: characters fly in, underline draws, shapes pop
+  // hero entrance
   gsap.timeline({defaults:{ease:'expo.out'}})
-    .from('.c',{yPercent:135,rotate:()=>gsap.utils.random(-28,28),duration:1.4,stagger:.03})
-    .from('#scr',{strokeDasharray:1,strokeDashoffset:1,duration:1,ease:'power2.inOut'},'-=.8')
-    .from('[data-in]',{y:30,opacity:0,duration:.9,stagger:.12},'-=1.1')
-    .from('.sh',{scale:0,rotate:-90,duration:1.3,stagger:.12,ease:'elastic.out(1,.55)'},'-=1.2')
-    .from('#badge',{scale:0,duration:1,ease:'back.out(2)'},'-=1');
+    .from('.ln>span',{yPercent:120,rotate:4,duration:1.3,stagger:.14})
+    .from('#scr',{strokeDasharray:1,strokeDashoffset:1,duration:1,ease:'power2.inOut'},'-=.7')
+    .from('[data-in]',{y:30,opacity:0,duration:.9,stagger:.12},'-=1')
+    .from('#win',{y:90,opacity:0,rotateX:35,rotateY:-18,duration:1.6},'-=1.3')
+    .from('.chip',{scale:0,duration:1,ease:'elastic.out(1,.55)',stagger:.15},'-=.6');
   gsap.set('#scr',{strokeDasharray:1,strokeDashoffset:0});
 
-  // 2. hero: scroll parallax, spinning badge, fading headline
-  $$('.sh').forEach(s=>gsap.to(s,{y:()=>-innerHeight*(+s.dataset.s)*.5,scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:1}}));
-  gsap.to('#badge',{rotate:720,scrollTrigger:{start:0,end:'max',scrub:1}});
-  gsap.to('.s1 i',{rotate:200,scale:1.5,scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:1}});
-  gsap.to('h1.big',{yPercent:-18,scale:.92,opacity:.1,transformOrigin:'left center',scrollTrigger:{trigger:'#hero',start:'center top',end:'bottom top',scrub:1}});
+  // terminal types itself
+  const tl=gsap.timeline({delay:1.5});
+  pre.querySelectorAll('div').forEach((d,i)=>{const t=L[i],o={n:0};d.textContent='';
+    tl.to(o,{n:t.length,duration:t.length*.028,ease:'none',snap:{n:1},onUpdate:()=>d.textContent=t.slice(0,o.n)}).to({},{duration:.3})});
 
-  // 3. hero: cursor spotlight + shape parallax
-  if(fine){
-    const hero=$('#hero'),p={x:72,y:28};
-    hero.addEventListener('mousemove',e=>{
-      const r=hero.getBoundingClientRect(),mx=(e.clientX-r.left)/r.width,my=(e.clientY-r.top)/r.height;
-      gsap.to(p,{x:mx*100,y:my*100,duration:.7,onUpdate:()=>{hero.style.setProperty('--mx',p.x+'%');hero.style.setProperty('--my',p.y+'%')}});
-      $$('.sh i').forEach(i=>gsap.to(i,{x:(mx-.5)*+i.parentNode.dataset.d,y:(my-.5)*+i.parentNode.dataset.d,duration:.8}));
-    });
-    $$('.mag').forEach(b=>{b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();gsap.to(b,{x:(e.clientX-r.left-r.width/2)*.2,y:(e.clientY-r.top-r.height/2)*.3,duration:.4})});b.addEventListener('mouseleave',()=>gsap.to(b,{x:0,y:0,duration:.7,ease:'elastic.out(1,.4)'}))});
-  }
+  // hero parallax: glows, window tilt, chips
+  gsap.to('#g1',{y:-220,scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:1}});
+  gsap.to('#g2',{y:160,scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:1}});
+  gsap.to('#win',{rotateX:-14,rotateY:10,y:-70,scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:1}});
+  gsap.to('#c1',{y:-90,x:20,scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:1}});
+  gsap.to('#c2',{y:60,x:-20,scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:1}});
+  gsap.to('h1.big',{yPercent:-14,opacity:.15,scrollTrigger:{trigger:'#hero',start:'center top',end:'bottom top',scrub:1}});
+  if(fine)$$('.mag').forEach(b=>{b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();gsap.to(b,{x:(e.clientX-r.left-r.width/2)*.2,y:(e.clientY-r.top-r.height/2)*.3,duration:.4})});b.addEventListener('mouseleave',()=>gsap.to(b,{x:0,y:0,duration:.7,ease:'elastic.out(1,.4)'}))});
 
-  // 4. marquee ribbons slide in opposite directions and skew with scroll speed
-  gsap.fromTo('.mq.a .tr',{xPercent:0},{xPercent:-45,ease:'none',scrollTrigger:{trigger:'.mqs',start:'top bottom',end:'bottom top',scrub:.6}});
-  gsap.fromTo('.mq.b .tr',{xPercent:-45},{xPercent:0,ease:'none',scrollTrigger:{trigger:'.mqs',start:'top bottom',end:'bottom top',scrub:.6}});
-  const sk=gsap.quickTo('.mq','skewX',{duration:.5,ease:'power3'});
-  ST.create({onUpdate:s=>sk(gsap.utils.clamp(-14,14,s.getVelocity()/-180))});
+  // marquee runs with scroll and skews with speed
+  gsap.fromTo('#tr',{xPercent:0},{xPercent:-50,ease:'none',scrollTrigger:{trigger:'.mq',start:'top bottom',end:'bottom top',scrub:.6}});
+  const sk=gsap.quickTo('#tr','skewX',{duration:.5,ease:'power3'});
+  ScrollTrigger.create({onUpdate:s=>sk(gsap.utils.clamp(-12,12,s.getVelocity()/-200))});
 
-  // 5. circular colour wipes into each section
-  const wipe=(sec,at)=>gsap.fromTo(sec+' .bg',{clipPath:`circle(0% at ${at})`},{clipPath:`circle(150% at ${at})`,ease:'none',scrollTrigger:{trigger:sec,start:'top bottom',end:'top 15%',scrub:1}});
-  wipe('#mf-s','50% 100%');wipe('#hz','10% 0%');wipe('#ac','50% 0%');
+  // headings
+  $$('.rv').forEach(el=>gsap.from(el,{y:70,opacity:0,duration:1,ease:'power4.out',scrollTrigger:{trigger:el,start:'top 88%'}}));
 
-  // 6. manifesto: words ignite one by one, scaling the line up
-  const mf=$('#mf');mf.innerHTML=mf.textContent.split(' ').map(w=>`<span class="w">${w}</span>`).join('');
-  gsap.fromTo('#mf .w',{opacity:.12,yPercent:30},{opacity:1,yPercent:0,stagger:.14,ease:'none',scrollTrigger:{trigger:'#mf',start:'top 80%',end:'bottom 50%',scrub:true}});
+  // stacking phase cards: earlier cards shrink and dim as the next one lands
+  const cards=$$('.sc');
+  cards.forEach((c,i)=>{ if(i<cards.length-1) gsap.to(c,{scale:.93-(cards.length-i)*.004,filter:'brightness(.55)',ease:'none',scrollTrigger:{trigger:cards[i+1],start:'top 88%',end:'top '+(100+(i+1)*24)+'px',scrub:true}});
+    gsap.from(c,{y:120,rotate:i%2?3:-3,opacity:.2,scrollTrigger:{trigger:c,start:'top 100%',end:'top 70%',scrub:true}});
+    gsap.fromTo(c.querySelector('.n'),{xPercent:40},{xPercent:-10,ease:'none',scrollTrigger:{trigger:c,start:'top bottom',end:'top 20%',scrub:true}});});
 
-  // 7. phases: pinned horizontal journey
-  gsap.matchMedia().add('(min-width: 992px)',()=>{
-    const t=$('#track'),dist=()=>t.scrollWidth-innerWidth+60;
-    const h=gsap.to(t,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'.hz-in',pin:true,scrub:1,start:'top top',end:()=>'+='+dist(),invalidateOnRefresh:true,onUpdate:s=>gsap.set('#hzp',{scaleX:s.progress})}});
-    $$('.card-p').forEach(c=>gsap.from(c,{y:160,rotate:9,scale:.8,opacity:.15,scrollTrigger:{trigger:c,containerAnimation:h,start:'left 98%',end:'left 55%',scrub:true}}));
-    $$('.card-p .n').forEach(n=>gsap.fromTo(n,{xPercent:60},{xPercent:-20,ease:'none',scrollTrigger:{trigger:n,containerAnimation:h,start:'left 100%',end:'right 0%',scrub:true}}));
-  });
+  // steps: line draws, dots pop
+  gsap.to('#ln',{scaleX:1,ease:'none',scrollTrigger:{trigger:'.steps',start:'top 75%',end:'bottom 60%',scrub:true}});
+  gsap.from('.stp',{y:80,opacity:0,stagger:.2,duration:1,ease:'power4.out',scrollTrigger:{trigger:'.steps',start:'top 80%'}});
+  gsap.from('.dot',{scale:0,rotate:-180,stagger:.2,duration:1,ease:'back.out(2)',scrollTrigger:{trigger:'.steps',start:'top 80%'}});
 
-  // 8. stats: outlined numbers fill with yellow as you scroll, and count up
-  $$('.st .n').forEach(n=>gsap.fromTo(n,{'--f':'0%'},{'--f':'100%',ease:'none',scrollTrigger:{trigger:n,start:'top 88%',end:'top 38%',scrub:1}}));
+  // stats
+  gsap.from('.stat',{y:100,opacity:0,stagger:.15,duration:1.1,ease:'power4.out',scrollTrigger:{trigger:'#stats',start:'top 82%'}});
   $$('[data-c]').forEach(el=>{const v=+el.dataset.c,o={n:0};gsap.to(o,{n:v,duration:2,ease:'power2.out',snap:{n:1},onUpdate:()=>el.textContent=o.n,scrollTrigger:{trigger:el,start:'top 88%',once:true}})});
-  gsap.from('.st .col-md-4',{y:120,rotate:4,opacity:0,stagger:.18,duration:1.1,ease:'power4.out',scrollTrigger:{trigger:'.st',start:'top 70%'}});
 
-  // 9. access box grows from a pill and tilts into place
-  gsap.from('#box',{scale:.8,rotate:-3,borderRadius:'160px',scrollTrigger:{trigger:'#box',start:'top 95%',end:'top 40%',scrub:1}});
+  // faq + form box
+  gsap.from('#fq details',{x:80,opacity:0,stagger:.15,duration:.9,ease:'power3.out',scrollTrigger:{trigger:'#fq',start:'top 82%'}});
+  gsap.from('#box',{scale:.85,y:80,borderRadius:'140px',scrollTrigger:{trigger:'#box',start:'top 95%',end:'top 45%',scrub:1}});
 });
 </script>
 </body>
