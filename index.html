@@ -13,7 +13,7 @@
 :root{--bg:#0a0a0a;--card:#141414;--line:#2a2a2a;--y:#FFC72C;--m:#a3a3a3;--ease:cubic-bezier(.2,.8,.2,1)}
 html{scroll-behavior:smooth;scroll-padding-top:100px}
 body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:#fff;overflow-x:clip;-webkit-font-smoothing:antialiased}
-h1,h2,h3{font-weight:800;letter-spacing:-.04em;line-height:1.04}
+h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.04}
 p{color:var(--m);line-height:1.75}
 :focus-visible{outline:3px solid var(--y);outline-offset:3px}
 #bar{position:fixed;inset:0 0 auto;height:4px;background:var(--y);transform:scaleX(0);transform-origin:left;z-index:2000}
@@ -39,8 +39,6 @@ p{color:var(--m);line-height:1.75}
 h1.big{font-size:clamp(2.7rem,6.6vw,5.6rem);margin:24px 0 26px}
 .ln{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
 .ln>span{display:inline-block;position:relative}
-.ln svg{position:absolute;left:0;bottom:.02em;width:100%;height:.2em;overflow:visible}
-.ln path{fill:none;stroke:var(--y);stroke-width:10;stroke-linecap:round}
 .lead{font-size:1.15rem;max-width:30rem;margin-bottom:32px}
 .win{background:#0f0f0f;border:1px solid var(--line);border-radius:22px;box-shadow:0 40px 120px rgba(0,0,0,.6),0 0 0 1px rgba(255,199,44,.08);transform-style:preserve-3d;overflow:hidden}
 .win-h{display:flex;gap:8px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);background:#141414}
@@ -51,7 +49,11 @@ h1.big{font-size:clamp(2.7rem,6.6vw,5.6rem);margin:24px 0 26px}
 .win pre .ok{color:var(--y)}
 .chip{position:absolute;z-index:3;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.55rem 1rem;font-weight:700;font-size:.85rem;box-shadow:0 14px 40px rgba(0,0,0,.5)}
 .chip b{color:var(--y)}
-.c1{right:-10px;top:-22px}.c2{left:-14px;bottom:44px}
+.c1{left:-12px;top:-30px}.c2{left:14px;bottom:-24px}
+.lt{position:absolute;right:-24px;top:-175px;width:210px;height:210px;z-index:4;pointer-events:none}
+.lt-s{position:absolute;left:50%;bottom:16px;width:36px;height:60px;margin-left:-18px;z-index:2}
+.lt-c{width:92px;height:92px;margin:0 0 10px -6px}
+.spin{display:none;width:22px;height:22px;vertical-align:-5px;margin-right:8px}
 /* marquee */
 .mq{overflow:hidden;border-block:1px solid var(--line);padding:22px 0;background:#0e0e0e}
 .tr{display:flex;width:max-content}
@@ -117,27 +119,28 @@ footer{padding:60px 0 50px;font-size:.95rem;color:#777}footer a{color:inherit}
 <div id="bar"></div>
 <nav class="nav" id="nav">
   <a class="brand" href="https://www.myapedeveloper.com/" target="_blank" rel="noopener"><i></i>Myape Developer</a>
-  <div class="nav-l"><a href="#phases">Phases</a><a href="#how">How it works</a><a href="#faq">FAQ</a></div>
-  <a class="btn-y" href="#access">Get access</a>
+  <div class="nav-l"><a href="#phases">What’s inside</a><a href="#how">How it works</a><a href="#faq">FAQ</a></div>
+  <a class="btn-y" href="#access">Get notes</a>
 </nav>
 
 <header class="hero" id="hero"><div class="grid-bg"></div><div class="glow g1" id="g1"></div><div class="glow g2" id="g2"></div>
 <div class="container"><div class="row align-items-center g-5">
   <div class="col-lg-7">
-    <span class="tag" data-in><b></b>Full course archive &middot; 7 phases</span>
-    <h1 class="big" aria-label="All your WordPress notes, kept in one shelf.">
-      <span class="ln" aria-hidden="true"><span>All your</span></span>
-      <span class="ln" aria-hidden="true"><span>WordPress notes,<svg viewBox="0 0 400 20" preserveAspectRatio="none"><path id="scr" pathLength="1" d="M4 12 C70 3,160 17,230 8 S350 4,396 9"/></svg></span></span>
-      <span class="ln" aria-hidden="true"><span>kept in one shelf.</span></span>
+    <span class="tag" data-in><b></b>Free WordPress notes &middot; 7 phases</span>
+    <h1 class="big" aria-label="Get our WordPress notes for free.">
+      <span class="ln" aria-hidden="true"><span>Get our</span></span>
+      <span class="ln" aria-hidden="true"><span>WordPress notes</span></span>
+      <span class="ln" aria-hidden="true"><span>for free.</span></span>
     </h1>
-    <p class="lead" data-in>Missed a class, forgot a step, or just want to revise before you build your next site? Pick a phase and jump back in.</p>
-    <div class="d-flex flex-wrap gap-3" data-in><a class="btn-y mag" href="#access">Get access</a><a class="btn-o" href="#phases">See the phases</a></div>
+    <p class="lead" data-in>We have put every phase of our WordPress course in one place, and we would be happy to share it with you. Missed a class, or just want a quick refresher? Please take whatever helps.</p>
+    <div class="d-flex flex-wrap gap-3" data-in><a class="btn-y mag" href="#access">Get the notes for free</a><a class="btn-o" href="#phases">See what’s inside</a></div>
   </div>
   <div class="col-lg-5" style="perspective:1200px"><div class="position-relative" id="winwrap">
-    <div class="chip c1" id="c1"><b>67</b> topics</div><div class="chip c2" id="c2"><b>7</b> phases</div>
+    <div class="lt d-none d-lg-block" id="l-notes" aria-hidden="true"></div><div class="chip c1" id="c1"><b>67</b> topics</div><div class="chip c2" id="c2"><b>7</b> phases</div>
     <div class="win" id="win"><div class="win-h"><i></i><i></i><i></i><span>terminal</span></div><pre id="code" aria-label="Example WP-CLI commands"></pre></div>
   </div></div>
-</div></div></header>
+</div></div><div class="lt-s d-none d-md-block" id="l-scroll" aria-hidden="true"></div>
+</header>
 
 <div class="mq" aria-hidden="true"><div class="tr" id="tr">
   <span>Themes</span><span>Plugins</span><span>Gutenberg</span><span>WooCommerce</span><span>Hooks</span><span>Security</span><span>Speed</span><span>SEO</span><span>Forms</span><span>Backups</span>
@@ -145,7 +148,7 @@ footer{padding:60px 0 50px;font-size:.95rem;color:#777}footer a{color:inherit}
 </div></div>
 
 <section class="sec" id="phases"><div class="container">
-  <h2 class="rv">Seven phases. Stacked in order.</h2><p class="sub rv mt-3">Scroll and watch the course pile up, one phase on top of the next.</p>
+  <h2 class="rv">What’s inside the notes</h2><p class="sub rv mt-3">Seven phases, in the order we teach them. We hope each one saves you a little time.</p>
   <div class="stack" id="stack">
     <article class="sc" style="--i:0"><span class="n">01</span><div><h3>Foundations</h3><p>Hosting, installation and a tour of the dashboard.</p></div><div class="chips"><b>Hosting</b><b>Install</b><b>Dashboard</b></div></article>
     <article class="sc y" style="--i:1"><span class="n">02</span><div><h3>Themes</h3><p>Choose, install and customise the look of your site.</p></div><div class="chips"><b>Themes</b><b>Customizer</b><b>Child themes</b></div></article>
@@ -158,11 +161,11 @@ footer{padding:60px 0 50px;font-size:.95rem;color:#777}footer a{color:inherit}
 </div></section>
 
 <section class="sec" id="how"><div class="container">
-  <h2 class="rv">Three steps to the notes.</h2>
+  <h2 class="rv">Getting your notes is simple.</h2>
   <div class="steps"><div class="line"><i id="ln"></i></div><div class="row g-5">
-    <div class="col-md-4 stp"><div class="dot">1</div><h3>Share your details</h3><p>Add your name and email in the form below.</p></div>
-    <div class="col-md-4 stp"><div class="dot">2</div><h3>Unlock the archive</h3><p>Your link to the full course appears right away.</p></div>
-    <div class="col-md-4 stp"><div class="dot">3</div><h3>Revise phase by phase</h3><p>Jump to the step you missed and keep building.</p></div>
+    <div class="col-md-4 stp"><div class="dot">1</div><h3>Tell us a little about you</h3><p>Your name and email are enough. We would love to know who we are helping.</p></div>
+    <div class="col-md-4 stp"><div class="dot">2</div><h3>Receive your link</h3><p>It appears right on this page, free of charge.</p></div>
+    <div class="col-md-4 stp"><div class="dot">3</div><h3>Learn at your own pace</h3><p>Come back to any phase whenever you need a refresher.</p></div>
   </div></div>
 </div></section>
 
@@ -172,42 +175,48 @@ footer{padding:60px 0 50px;font-size:.95rem;color:#777}footer a{color:inherit}
   <div class="stat"><div class="n"><span data-c="100">100</span>%</div><p>Course complete</p></div>
 </div></div></section>
 
-<section class="sec" id="faq"><div class="container"><div class="row g-5"><div class="col-lg-5"><h2 class="rv">Quick answers.</h2></div>
+<section class="sec" id="faq"><div class="container"><div class="row g-5"><div class="col-lg-5"><h2 class="rv">A few quick answers.</h2></div>
   <div class="col-lg-7" id="fq">
-    <details><summary>How do I get access?</summary><p>Fill in the short form at the bottom of this page. Your link to the archive appears as soon as it is sent.</p></details>
-    <details><summary>What is inside the archive?</summary><p>Seven phases and 67 topics of WordPress notes, organised so you can find the step you need.</p></details>
-    <details><summary>What do you do with my details?</summary><p>They are emailed to the Myape Developer team so we know who is using the notes.</p></details>
+    <details><summary>Is it really free?</summary><p>Yes. The notes are free for everyone. We only ask for your name and email so we know who we are helping.</p></details>
+    <details><summary>What will I find inside?</summary><p>Seven phases and 67 topics of WordPress notes, organised so you can find the step you need.</p></details>
+    <details><summary>What if I have a question?</summary><p>Please write to <a href="mailto:hi@myapedeveloper.com" style="color:#FFC72C">hi@myapedeveloper.com</a>. We would be glad to help.</p></details>
   </div></div></div></section>
 
 <section class="sec pb-5" id="access"><div class="container">
   <div class="acbox" id="box"><div class="row g-5 align-items-center">
-    <div class="col-lg-5"><h2>Tell us who you are, then step inside.</h2><p class="mt-3">Share your basic details and the full WordPress archive unlocks right here.</p></div>
+    <div class="col-lg-5"><h2>Please tell us who you are.</h2><p class="mt-3">Share your name and email, and your free WordPress notes will appear right here. Thank you!</p></div>
     <div class="col-lg-7">
       <form id="gate" novalidate>
         <div class="row"><div class="col-md-6"><div class="f"><label for="nm">Full name</label><input id="nm" name="name" autocomplete="name" placeholder="Your name" required></div></div>
         <div class="col-md-6"><div class="f"><label for="ph">Phone (optional)</label><input id="ph" name="phone" type="tel" autocomplete="tel" placeholder="+91 98xxx xxxxx"></div></div></div>
         <div class="f"><label for="em">Email</label><input id="em" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
         <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn-y mt-2 mag" id="go" type="submit">Unlock the notes</button>
+        <button class="btn-y mt-2 mag" id="go" type="submit"><span class="spin" id="spin"></span><span id="gt">Get my free notes</span></button>
         <p class="msg" id="msg" role="status"></p>
       </form>
       <div class="done" id="done">
-        <h3 class="h2 mb-3">You’re in. Thank you!</h3>
-        <p class="mb-4">Your details are with us. Here is your link to the archive.</p>
-        <a class="linkbox" href="https://www.myapedeveloper.com/wordpress-cheatsheet/" target="_blank" rel="noopener"><span>myapedeveloper.com/wordpress-cheatsheet</span><em>Open</em></a>
+        <div class="lt-c" id="l-check" aria-hidden="true"></div><h3 class="h2 mb-3">Thank you<span id="who"></span>!</h3>
+        <p class="mb-4">Your notes are ready. We hope they help you build something wonderful.</p>
+        <a class="linkbox" href="https://www.myapedeveloper.com/wordpress-cheatsheet/" target="_blank" rel="noopener"><span>myapedeveloper.com/wordpress-cheatsheet</span><em>Open the notes</em></a>
       </div>
     </div>
   </div></div>
 </div></section>
-<footer><div class="container d-flex flex-wrap justify-content-between gap-2"><span>&copy; Myape Developer</span><a href="https://www.myapedeveloper.com/" target="_blank" rel="noopener">myapedeveloper.com</a></div></footer>
+<footer><div class="container d-flex flex-wrap justify-content-between gap-2"><span>&copy; Myape Developer. Made with care, and shared with thanks.</span><a href="https://www.myapedeveloper.com/" target="_blank" rel="noopener">myapedeveloper.com</a></div></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie_light.min.js"></script>
 <script>
 gsap.registerPlugin(ScrollTrigger);
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const TO='hi@myapedeveloper.com',fine=matchMedia('(pointer:fine)').matches;
 
+const ANIM={"notes":{"v":"5.7.0","fr":60,"ip":0,"op":240,"w":400,"h":400,"nm":"notes","ddd":0,"assets":[],"layers":[{"ddd":0,"ind":1,"ty":4,"nm":"l1","sr":1,"ks":{"o":{"a":0,"k":100},"r":{"a":1,"k":[{"t":0,"s":[0],"i":{"x":1,"y":1},"o":{"x":0,"y":0}},{"t":240,"s":[180]}]},"p":{"a":0,"k":[325,85,0]},"a":{"a":0,"k":[0,0,0]},"s":{"a":1,"k":[{"t":0,"s":[0,0,100],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":0,"s":[0,0,100],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":40,"s":[100,100,100],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":85,"s":[0,0,100],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":240,"s":[0,0,100]}]}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"sr","sy":1,"d":1,"pt":{"a":0,"k":4},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":0},"ir":{"a":0,"k":5},"is":{"a":0,"k":0},"or":{"a":0,"k":20},"os":{"a":0,"k":0},"nm":"sr"},{"ty":"fl","c":{"a":0,"k":[1,0.78,0.17,1]},"o":{"a":0,"k":100},"r":1,"nm":"fl"},{"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100},"sk":{"a":0,"k":0},"sa":{"a":0,"k":0}}],"nm":"g"}],"ip":0,"op":240,"st":0,"bm":0},{"ddd":0,"ind":2,"ty":4,"nm":"l2","sr":1,"ks":{"o":{"a":0,"k":100},"r":{"a":1,"k":[{"t":0,"s":[0],"i":{"x":1,"y":1},"o":{"x":0,"y":0}},{"t":240,"s":[180]}]},"p":{"a":0,"k":[78,140,0]},"a":{"a":0,"k":[0,0,0]},"s":{"a":1,"k":[{"t":0,"s":[0,0,100],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":70,"s":[0,0,100],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":110,"s":[100,100,100],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":155,"s":[0,0,100],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":240,"s":[0,0,100]}]}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"sr","sy":1,"d":1,"pt":{"a":0,"k":4},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":0},"ir":{"a":0,"k":5},"is":{"a":0,"k":0},"or":{"a":0,"k":20},"os":{"a":0,"k":0},"nm":"sr"},{"ty":"fl","c":{"a":0,"k":[1,1,1,1]},"o":{"a":0,"k":100},"r":1,"nm":"fl"},{"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100},"sk":{"a":0,"k":0},"sa":{"a":0,"k":0}}],"nm":"g"}],"ip":0,"op":240,"st":0,"bm":0},{"ddd":0,"ind":3,"ty":4,"nm":"l3","sr":1,"ks":{"o":{"a":0,"k":100},"r":{"a":1,"k":[{"t":0,"s":[0],"i":{"x":1,"y":1},"o":{"x":0,"y":0}},{"t":240,"s":[180]}]},"p":{"a":0,"k":[305,310,0]},"a":{"a":0,"k":[0,0,0]},"s":{"a":1,"k":[{"t":0,"s":[0,0,100],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":140,"s":[0,0,100],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":180,"s":[100,100,100],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":225,"s":[0,0,100],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":240,"s":[0,0,100]}]}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"sr","sy":1,"d":1,"pt":{"a":0,"k":4},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":0},"ir":{"a":0,"k":5},"is":{"a":0,"k":0},"or":{"a":0,"k":20},"os":{"a":0,"k":0},"nm":"sr"},{"ty":"fl","c":{"a":0,"k":[1,0.78,0.17,1]},"o":{"a":0,"k":100},"r":1,"nm":"fl"},{"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100},"sk":{"a":0,"k":0},"sa":{"a":0,"k":0}}],"nm":"g"}],"ip":0,"op":240,"st":0,"bm":0},{"ddd":0,"ind":4,"ty":4,"nm":"l4","sr":1,"ks":{"o":{"a":0,"k":100},"r":{"a":1,"k":[{"t":0,"s":[6],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":120,"s":[10],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":240,"s":[6]}]},"p":{"a":1,"k":[{"t":0,"s":[205,208,0],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":120,"s":[205,190,0],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":240,"s":[205,208,0]}]},"a":{"a":0,"k":[0,0,0]},"s":{"a":0,"k":[100,100,100]}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"rc","d":1,"s":{"a":0,"k":[150,190]},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":18},"nm":"rc"},{"ty":"fl","c":{"a":0,"k":[1,0.78,0.17,1]},"o":{"a":0,"k":100},"r":1,"nm":"fl"},{"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100},"sk":{"a":0,"k":0},"sa":{"a":0,"k":0}}],"nm":"g"},{"ty":"gr","it":[{"ty":"rc","d":1,"s":{"a":0,"k":[92,10]},"p":{"a":0,"k":[0,-44]},"r":{"a":0,"k":5},"nm":"rc"},{"ty":"fl","c":{"a":0,"k":[0.04,0.04,0.04,1]},"o":{"a":0,"k":100},"r":1,"nm":"fl"},{"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100},"sk":{"a":0,"k":0},"sa":{"a":0,"k":0}}],"nm":"g"},{"ty":"gr","it":[{"ty":"rc","d":1,"s":{"a":0,"k":[92,10]},"p":{"a":0,"k":[0,-18]},"r":{"a":0,"k":5},"nm":"rc"},{"ty":"fl","c":{"a":0,"k":[0.04,0.04,0.04,1]},"o":{"a":0,"k":100},"r":1,"nm":"fl"},{"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100},"sk":{"a":0,"k":0},"sa":{"a":0,"k":0}}],"nm":"g"},{"ty":"gr","it":[{"ty":"rc","d":1,"s":{"a":0,"k":[60,10]},"p":{"a":0,"k":[-16,8]},"r":{"a":0,"k":5},"nm":"rc"},{"ty":"fl","c":{"a":0,"k":[0.04,0.04,0.04,1]},"o":{"a":0,"k":100},"r":1,"nm":"fl"},{"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100},"sk":{"a":0,"k":0},"sa":{"a":0,"k":0}}],"nm":"g"}],"ip":0,"op":240,"st":0,"bm":0},{"ddd":0,"ind":5,"ty":4,"nm":"l5","sr":1,"ks":{"o":{"a":0,"k":100},"r":{"a":1,"k":[{"t":0,"s":[-7],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":120,"s":[-10],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":240,"s":[-7]}]},"p":{"a":1,"k":[{"t":0,"s":[190,200,0],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":120,"s":[190,216,0],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":240,"s":[190,200,0]}]},"a":{"a":0,"k":[0,0,0]},"s":{"a":0,"k":[100,100,100]}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"rc","d":1,"s":{"a":0,"k":[150,190]},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":18},"nm":"rc"},{"ty":"fl","c":{"a":0,"k":[1,1,1,1]},"o":{"a":0,"k":100},"r":1,"nm":"fl"},{"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100},"sk":{"a":0,"k":0},"sa":{"a":0,"k":0}}],"nm":"g"}],"ip":0,"op":240,"st":0,"bm":0},{"ddd":0,"ind":6,"ty":4,"nm":"l6","sr":1,"ks":{"o":{"a":0,"k":100},"r":{"a":1,"k":[{"t":0,"s":[-16],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":120,"s":[-19],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":240,"s":[-16]}]},"p":{"a":1,"k":[{"t":0,"s":[200,226,0],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":120,"s":[200,214,0],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":240,"s":[200,226,0]}]},"a":{"a":0,"k":[0,0,0]},"s":{"a":0,"k":[100,100,100]}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"rc","d":1,"s":{"a":0,"k":[150,190]},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":18},"nm":"rc"},{"ty":"fl","c":{"a":0,"k":[0.2,0.2,0.2,1]},"o":{"a":0,"k":100},"r":1,"nm":"fl"},{"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100},"sk":{"a":0,"k":0},"sa":{"a":0,"k":0}}],"nm":"g"}],"ip":0,"op":240,"st":0,"bm":0},{"ddd":0,"ind":7,"ty":4,"nm":"l7","sr":1,"ks":{"o":{"a":1,"k":[{"t":0,"s":[35],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":120,"s":[12],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":240,"s":[35]}]},"r":{"a":0,"k":0},"p":{"a":0,"k":[200,200,0]},"a":{"a":0,"k":[0,0,0]},"s":{"a":1,"k":[{"t":0,"s":[92,92,100],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":120,"s":[108,108,100],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":240,"s":[92,92,100]}]}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"el","d":1,"s":{"a":0,"k":[300,300]},"p":{"a":0,"k":[0,0]},"nm":"el"},{"ty":"st","c":{"a":0,"k":[1,0.78,0.17,1]},"o":{"a":0,"k":100},"w":{"a":0,"k":4},"lc":2,"lj":2,"nm":"st"},{"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100},"sk":{"a":0,"k":0},"sa":{"a":0,"k":0}}],"nm":"g"}],"ip":0,"op":240,"st":0,"bm":0}]},"check":{"v":"5.7.0","fr":60,"ip":0,"op":90,"w":200,"h":200,"nm":"check","ddd":0,"assets":[],"layers":[{"ddd":0,"ind":1,"ty":4,"nm":"l1","sr":1,"ks":{"o":{"a":1,"k":[{"t":0,"s":[0],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":23,"s":[0],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":24,"s":[100]}]},"r":{"a":0,"k":0},"p":{"a":0,"k":[100,100,0]},"a":{"a":0,"k":[0,0,0]},"s":{"a":0,"k":[100,100,100]}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"sh","ks":{"a":0,"k":{"i":[[0,0],[0,0],[0,0]],"o":[[0,0],[0,0],[0,0]],"v":[[-26,3],[-8,21],[28,-17]],"c":false}},"nm":"p"},{"ty":"st","c":{"a":0,"k":[0.04,0.04,0.04,1]},"o":{"a":0,"k":100},"w":{"a":0,"k":14},"lc":2,"lj":2,"nm":"st"},{"ty":"tm","s":{"a":0,"k":0},"e":{"a":1,"k":[{"t":24,"s":[0],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":46,"s":[100]}]},"o":{"a":0,"k":0},"m":1,"nm":"tm"},{"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100},"sk":{"a":0,"k":0},"sa":{"a":0,"k":0}}],"nm":"g"}],"ip":0,"op":90,"st":0,"bm":0},{"ddd":0,"ind":2,"ty":4,"nm":"l2","sr":1,"ks":{"o":{"a":0,"k":100},"r":{"a":0,"k":0},"p":{"a":0,"k":[100,100,0]},"a":{"a":0,"k":[0,0,0]},"s":{"a":1,"k":[{"t":0,"s":[0,0,100],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":18,"s":[116,116,100],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":28,"s":[100,100,100]}]}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"el","d":1,"s":{"a":0,"k":[120,120]},"p":{"a":0,"k":[0,0]},"nm":"el"},{"ty":"fl","c":{"a":0,"k":[1,0.78,0.17,1]},"o":{"a":0,"k":100},"r":1,"nm":"fl"},{"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100},"sk":{"a":0,"k":0},"sa":{"a":0,"k":0}}],"nm":"g"}],"ip":0,"op":90,"st":0,"bm":0},{"ddd":0,"ind":3,"ty":4,"nm":"l3","sr":1,"ks":{"o":{"a":1,"k":[{"t":0,"s":[0],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":14,"s":[100],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":62,"s":[0]}]},"r":{"a":0,"k":0},"p":{"a":0,"k":[100,100,0]},"a":{"a":0,"k":[0,0,0]},"s":{"a":1,"k":[{"t":14,"s":[80,80,100],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":62,"s":[160,160,100]}]}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"el","d":1,"s":{"a":0,"k":[130,130]},"p":{"a":0,"k":[0,0]},"nm":"el"},{"ty":"st","c":{"a":0,"k":[1,0.78,0.17,1]},"o":{"a":0,"k":100},"w":{"a":0,"k":4},"lc":2,"lj":2,"nm":"st"},{"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100},"sk":{"a":0,"k":0},"sa":{"a":0,"k":0}}],"nm":"g"}],"ip":0,"op":90,"st":0,"bm":0}]},"spin":{"v":"5.7.0","fr":60,"ip":0,"op":60,"w":100,"h":100,"nm":"spin","ddd":0,"assets":[],"layers":[{"ddd":0,"ind":1,"ty":4,"nm":"l1","sr":1,"ks":{"o":{"a":0,"k":100},"r":{"a":1,"k":[{"t":0,"s":[0],"i":{"x":1,"y":1},"o":{"x":0,"y":0}},{"t":60,"s":[360]}]},"p":{"a":0,"k":[50,50,0]},"a":{"a":0,"k":[0,0,0]},"s":{"a":0,"k":[100,100,100]}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"el","d":1,"s":{"a":0,"k":[60,60]},"p":{"a":0,"k":[0,0]},"nm":"el"},{"ty":"st","c":{"a":0,"k":[0.04,0.04,0.04,1]},"o":{"a":0,"k":100},"w":{"a":0,"k":10},"lc":2,"lj":2,"nm":"st"},{"ty":"tm","s":{"a":0,"k":0},"e":{"a":0,"k":70},"o":{"a":0,"k":0},"m":1,"nm":"tm"},{"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100},"sk":{"a":0,"k":0},"sa":{"a":0,"k":0}}],"nm":"g"}],"ip":0,"op":60,"st":0,"bm":0}]},"scroll":{"v":"5.7.0","fr":60,"ip":0,"op":90,"w":60,"h":100,"nm":"scroll","ddd":0,"assets":[],"layers":[{"ddd":0,"ind":1,"ty":4,"nm":"l1","sr":1,"ks":{"o":{"a":1,"k":[{"t":0,"s":[0],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":10,"s":[100],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":50,"s":[100],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":65,"s":[0],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":90,"s":[0]}]},"r":{"a":0,"k":0},"p":{"a":1,"k":[{"t":0,"s":[30,24,0],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":65,"s":[30,46,0],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":90,"s":[30,46,0]}]},"a":{"a":0,"k":[0,0,0]},"s":{"a":0,"k":[100,100,100]}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"el","d":1,"s":{"a":0,"k":[6,6]},"p":{"a":0,"k":[0,0]},"nm":"el"},{"ty":"fl","c":{"a":0,"k":[1,0.78,0.17,1]},"o":{"a":0,"k":100},"r":1,"nm":"fl"},{"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100},"sk":{"a":0,"k":0},"sa":{"a":0,"k":0}}],"nm":"g"}],"ip":0,"op":90,"st":0,"bm":0},{"ddd":0,"ind":2,"ty":4,"nm":"l2","sr":1,"ks":{"o":{"a":0,"k":100},"r":{"a":0,"k":0},"p":{"a":1,"k":[{"t":0,"s":[30,84,0],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":45,"s":[30,92,0],"i":{"x":0.4,"y":1},"o":{"x":0.6,"y":0}},{"t":90,"s":[30,84,0]}]},"a":{"a":0,"k":[0,0,0]},"s":{"a":0,"k":[100,100,100]}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"sh","ks":{"a":0,"k":{"i":[[0,0],[0,0],[0,0]],"o":[[0,0],[0,0],[0,0]],"v":[[-8,-4],[0,4],[8,-4]],"c":false}},"nm":"p"},{"ty":"st","c":{"a":0,"k":[1,1,1,1]},"o":{"a":0,"k":100},"w":{"a":0,"k":3},"lc":2,"lj":2,"nm":"st"},{"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100},"sk":{"a":0,"k":0},"sa":{"a":0,"k":0}}],"nm":"g"}],"ip":0,"op":90,"st":0,"bm":0},{"ddd":0,"ind":3,"ty":4,"nm":"l3","sr":1,"ks":{"o":{"a":0,"k":100},"r":{"a":0,"k":0},"p":{"a":0,"k":[30,38,0]},"a":{"a":0,"k":[0,0,0]},"s":{"a":0,"k":[100,100,100]}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"rc","d":1,"s":{"a":0,"k":[34,56]},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":17},"nm":"rc"},{"ty":"st","c":{"a":0,"k":[1,1,1,1]},"o":{"a":0,"k":100},"w":{"a":0,"k":3},"lc":2,"lj":2,"nm":"st"},{"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100},"sk":{"a":0,"k":0},"sa":{"a":0,"k":0}}],"nm":"g"}],"ip":0,"op":90,"st":0,"bm":0}]}};
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function lot(sel,data,loop){const el=$(sel);if(!el||!window.lottie)return null;return lottie.loadAnimation({container:el,renderer:'svg',loop:loop,autoplay:loop&&!RM,animationData:data})}
+const notesA=lot('#l-notes',ANIM.notes,true),scrollA=lot('#l-scroll',ANIM.scroll,true),spinA=lot('#spin',ANIM.spin,true),checkA=lot('#l-check',ANIM.check,false),spin=$('#spin');
+if(RM&&notesA)notesA.goToAndStop(60,true);if(checkA)checkA.goToAndStop(0,true);
 /* ---------- terminal text ---------- */
 const L=['$ wp core download','$ wp core install --url=mysite.com --title="My Site"','$ wp theme install astra --activate','$ wp plugin install elementor --activate','✔ Your site is ready.'];
 const pre=$('#code');pre.innerHTML=L.map(t=>`<div class="${t[0]=='$'?'':'ok'}">${t}</div>`).join('');
@@ -229,16 +238,16 @@ function confetti(){
   }
 }
 function unlock(){
-  const d=$('#done');
-  gsap.to(form,{opacity:0,y:-24,duration:.35,onComplete:()=>{form.style.display='none';d.style.display='block';gsap.fromTo(d,{opacity:0,y:34,scale:.94},{opacity:1,y:0,scale:1,duration:.8,ease:'back.out(1.6)'});confetti()}});
+  const d=$('#done');const fn=form.name.value.trim().split(' ')[0];$('#who').textContent=fn?', '+fn:'';
+  gsap.to(form,{opacity:0,y:-24,duration:.35,onComplete:()=>{form.style.display='none';d.style.display='block';gsap.fromTo(d,{opacity:0,y:34,scale:.94},{opacity:1,y:0,scale:1,duration:.8,ease:'back.out(1.6)'});confetti();checkA&&checkA.goToAndPlay(0,true)}});
 }
 form.addEventListener('submit',async e=>{
   e.preventDefault();
   const name=form.name.value.trim(),email=form.email.value.trim(),phone=form.phone.value.trim();
-  if(name.length<2){msg.textContent='Please enter your name.';form.name.focus();return}
-  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){msg.textContent='Please enter a valid email address.';form.email.focus();return}
+  if(name.length<2){msg.textContent='Could you please enter your name?';form.name.focus();return}
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){msg.textContent='Could you please check your email address?';form.email.focus();return}
   if(form._honey.value)return;
-  go.disabled=true;go.textContent='Sending…';msg.textContent='';
+  go.disabled=true;$('#gt').textContent='Sending…';spin.style.display='inline-block';msg.textContent='';
   try{
     const r=await fetch('https://formsubmit.co/ajax/'+TO,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
       body:JSON.stringify({name,email,phone:phone||'Not provided',_subject:'New WordPress notes access request',_template:'table',_captcha:'false',page:location.href})});
@@ -246,8 +255,8 @@ form.addEventListener('submit',async e=>{
     if(!r.ok||j.success==='false'||j.success===false)throw new Error(j.message||'failed');
     unlock();
   }catch(err){
-    go.disabled=false;go.textContent='Unlock the notes';
-    msg.innerHTML='We couldn’t send that automatically. <a href="#" id="mt">Send it by email instead</a>.';
+    go.disabled=false;$('#gt').textContent='Get my free notes';spin.style.display='none';
+    msg.innerHTML='Sorry, we couldn’t send that just now. Would you mind <a href="#" id="mt">sending it by email instead</a>?';
     $('#mt').onclick=ev=>{ev.preventDefault();
       location.href='mailto:'+TO+'?subject='+encodeURIComponent('WordPress notes access request')+'&body='+encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nPhone: '+(phone||'Not provided'));
       unlock()};
@@ -261,11 +270,11 @@ gsap.matchMedia().add('(prefers-reduced-motion: no-preference)',()=>{
   // hero entrance
   gsap.timeline({defaults:{ease:'expo.out'}})
     .from('.ln>span',{yPercent:120,rotate:4,duration:1.3,stagger:.14})
-    .from('#scr',{strokeDasharray:1,strokeDashoffset:1,duration:1,ease:'power2.inOut'},'-=.7')
+    
     .from('[data-in]',{y:30,opacity:0,duration:.9,stagger:.12},'-=1')
     .from('#win',{y:90,opacity:0,rotateX:35,rotateY:-18,duration:1.6},'-=1.3')
     .from('.chip',{scale:0,duration:1,ease:'elastic.out(1,.55)',stagger:.15},'-=.6');
-  gsap.set('#scr',{strokeDasharray:1,strokeDashoffset:0});
+  
 
   // terminal types itself
   const tl=gsap.timeline({delay:1.5});
@@ -284,7 +293,7 @@ gsap.matchMedia().add('(prefers-reduced-motion: no-preference)',()=>{
   // marquee runs with scroll and skews with speed
   gsap.fromTo('#tr',{xPercent:0},{xPercent:-50,ease:'none',scrollTrigger:{trigger:'.mq',start:'top bottom',end:'bottom top',scrub:.6}});
   const sk=gsap.quickTo('#tr','skewX',{duration:.5,ease:'power3'});
-  ScrollTrigger.create({onUpdate:s=>sk(gsap.utils.clamp(-12,12,s.getVelocity()/-200))});
+  ScrollTrigger.create({onUpdate:s=>{const v=s.getVelocity();sk(gsap.utils.clamp(-12,12,v/-200));notesA&&notesA.setSpeed(1+Math.min(4,Math.abs(v)/500))}});
 
   // headings
   $$('.rv').forEach(el=>gsap.from(el,{y:70,opacity:0,duration:1,ease:'power4.out',scrollTrigger:{trigger:el,start:'top 88%'}}));
